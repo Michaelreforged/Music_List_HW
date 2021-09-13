@@ -1,25 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
+import Musics from './Musics';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+
+  state = {
+    music: [
+      { id: 1, name: "Shelter", artist: "Porter Robinson" },
+      { id: 2, name: "All Star", artist: "Smahs Mouth" },
+      { id: 3, name: "Flyers", artist: "Bradio" },
+    ],
+  };
+
+  componentDidMount(){
+    console.log("Mounted App")
+  }
+  componentDidUpdate(){
+    console.log("Updated")
+  }
+
+  render(){
+  return(
+    <Container>
+      <Musics
+      music = {this.state.music}/>
+    </Container>
+  )}
 }
 
 export default App;
