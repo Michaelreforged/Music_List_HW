@@ -19,8 +19,8 @@ class Music extends Component {
         <Table.Cell>{this.props.artist}</Table.Cell>
         <Table.Cell>
           <Button.Group fluid>
-            <Button color="blue">Edit</Button>
-            <Button color="red">Delete</Button>
+            <Button  color="blue">Edit</Button>
+            <Button onClick={ () => this.props.deleteSong(this.props.id)} color="red">Delete</Button>
           </Button.Group>
         </Table.Cell>
       </Table.Row>

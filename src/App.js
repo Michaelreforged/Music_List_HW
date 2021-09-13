@@ -26,11 +26,16 @@ class App extends Component{
 
   addSong = (song) => {
     this.setState({
-      songs: [song, ...this.state.songs]
+      songs: [...this.state.songs, song]
     })
   }
 
-
+  deleteSong = (id) => {
+    let filterSongs= this.state.songs.filter((s) => s.id !==id)
+    this.setState({
+      songs: filterSongs,
+    })
+  }
 
   render(){
   return(
@@ -40,7 +45,8 @@ class App extends Component{
       songs ={this.state.songs}
       addSong={this.addSong}/>
       <Musics
-      songs = {this.state.songs}/>
+      songs = {this.state.songs}
+      deleteSong = {this.deleteSong}/>
     </Container>
   )}
 }

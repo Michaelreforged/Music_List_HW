@@ -33,6 +33,7 @@ class Musics extends Component{
           {this.props.songs.map((song)=>(
             <Music
             key = {song.id}
+            deleteSong = {this.props.deleteSong}
             {...song}/>
             ))}
         </Table.Body>
