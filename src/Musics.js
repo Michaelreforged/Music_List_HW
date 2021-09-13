@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Button, Table} from "semantic-ui-react";
+import {Table} from "semantic-ui-react";
 import Music from "./Music";
 
-//this.props.music
+//this.props.songs
 
 class Musics extends Component{
 
@@ -10,11 +10,12 @@ class Musics extends Component{
     console.log("Mounted Musics")
     console.log(this)
   }
+
   componentDidUpdate(){
-    console.log("Updated")
+    console.log("Updated Musics")
   }
 
-
+  
   render() { 
 
     return(
@@ -29,13 +30,9 @@ class Musics extends Component{
         </Table.Header>
 
         <Table.Body>
-          <Table.Row>
-            <Table.Cell colSpan='3'>
-              <Button fluid>Add New Song</Button>
-            </Table.Cell>
-          </Table.Row>
-          {this.props.music.map((song)=>(
+          {this.props.songs.map((song)=>(
             <Music
+            key = {song.id}
             {...song}/>
             ))}
         </Table.Body>

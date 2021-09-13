@@ -8,12 +8,13 @@ class Music extends Component {
     console.log(this.props)
   }
   componentDidUpdate(){
-    console.log("Updated")
+    console.log("Updated Music")
   }
+
   
   render(){
     return(
-      <Table.Row key = {this.props.id}>
+      <Table.Row>
         <Table.Cell>{this.props.name}</Table.Cell>
         <Table.Cell>{this.props.artist}</Table.Cell>
         <Table.Cell>
