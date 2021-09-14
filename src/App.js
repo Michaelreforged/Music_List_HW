@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Button, Container } from 'semantic-ui-react';
 import Musics from './Musics';
 import MusicForm from './MusicForm';
+import styled from 'styled-components';
 
 class App extends Component{
 
@@ -56,7 +57,8 @@ class App extends Component{
 
   render(){
   return(
-    <Container>
+    <AppContainer>
+      <Container>
       <Button fluid onClick={this.toggleForm}>Add New Song</Button>
       
       {this.state.showForm && <MusicForm
@@ -66,8 +68,15 @@ class App extends Component{
       songs = {this.state.songs}
       deleteSong = {this.deleteSong}
       updateSong = {this.updateSong}/>
-    </Container>
+      </Container>
+    </AppContainer>
   )}
 }
+
+const AppContainer = styled.div`
+  min-height: 100vh;
+  background: rgb(2,0,36);
+  background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(11,194,58,.92) 50%, rgba(10,0,255,1) 100%);
+`
 
 export default App;

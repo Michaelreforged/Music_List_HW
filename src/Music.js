@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-import { Button, Table } from "semantic-ui-react";
-import MusicForm from "./MusicForm";
+import { Button, Icon, Table } from "semantic-ui-react";
+import styled, { keyframes } from "styled-components";
+import  MusicForm from "./MusicForm";
 
 class Music extends Component {
 
-  state = {showForm:false}
+  
+
+  state = {
+    showForm:false,
+    spin: true
+  }
+
   componentDidMount(){
     console.log("Mounted Music")
     console.log(this.props)
@@ -16,6 +23,13 @@ class Music extends Component {
   toggleForm = () => {
     this.setState({
       showForm: !this.state.showForm
+    })
+  }
+
+  toggleSpin = () => {
+    console.log(this.state.spin)
+    this.setState({
+      spin: !this.state.spin
     })
   }
   
@@ -35,7 +49,18 @@ class Music extends Component {
     }
     return(
       <Table.Row>
-        <Table.Cell>{this.props.name}</Table.Cell>
+        <Table.Cell>
+          {this.props.name}
+          {this.state.spin ? 
+          <StarSpin>
+            <Icon onClick={this.toggleSpin} name="star" />
+            </StarSpin >
+            :
+            <Star>
+              <Icon onClick={this.toggleSpin} name="star"/>
+            </Star>
+            }
+          </Table.Cell>
         <Table.Cell>{this.props.artist}</Table.Cell>
         <Table.Cell>
           <Button.Group fluid>
@@ -46,4 +71,28 @@ class Music extends Component {
       </Table.Row>
     )}
 } 
+
+const rotate360 = keyframes`
+from {
+  transform:rotate(0deg);
+  color: red;
+}
+to {
+  transform:rotate(360deg);
+  color: blue;
+}
+`;
+
+const StarSpin = styled.div`
+  fontsize: 30px;
+  display: inline-block;
+  color: red;
+  animation: ${rotate360} 2s linear infinite;
+`;
+
+const Star = styled.div`
+  fontsize: 30px;
+  display: inline-block;
+  color: red;
+`;
 export default Music
