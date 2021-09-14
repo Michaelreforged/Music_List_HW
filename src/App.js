@@ -12,7 +12,10 @@ class App extends Component{
       { id: 2, name: "All Star", artist: "Smash Mouth" },
       { id: 3, name: "Flyers", artist: "Bradio" },
     ],
+    showForm:false
   };
+
+
 
   componentDidMount(){
     console.log("Mounted App")
@@ -30,6 +33,20 @@ class App extends Component{
     })
   }
 
+  updateSong = (song) => {
+    let updateSongs = this.state.songs.map((s) =>
+    s.id === song.id ? song : s)
+    this.setState({
+      songs: updateSongs
+    })
+  }
+
+  toggleForm = () => {
+    this.setState({
+      showForm: !this.state.showForm
+    })
+  }
+
   deleteSong = (id) => {
     let filterSongs= this.state.songs.filter((s) => s.id !==id)
     this.setState({
@@ -40,13 +57,15 @@ class App extends Component{
   render(){
   return(
     <Container>
-      <Button fluid>Add New Song</Button>
-      <MusicForm
+      <Button fluid onClick={this.toggleForm}>Add New Song</Button>
+      
+      {this.state.showForm && <MusicForm
       songs ={this.state.songs}
-      addSong={this.addSong}/>
+      addSong={this.addSong}/>}
       <Musics
       songs = {this.state.songs}
-      deleteSong = {this.deleteSong}/>
+      deleteSong = {this.deleteSong}
+      updateSong = {this.updateSong}/>
     </Container>
   )}
 }

@@ -34,6 +34,7 @@ class Musics extends Component{
             <Music
             key = {song.id}
             deleteSong = {this.props.deleteSong}
+            updateSong = {this.props.updateSong}
             {...song}/>
             ))}
         </Table.Body>
