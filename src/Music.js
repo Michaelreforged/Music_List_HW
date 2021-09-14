@@ -59,7 +59,7 @@ class Music extends Component {
             <Star>
               <Icon onClick={this.toggleSpin} name="star"/>
             </Star>
-            }
+          }
           </Table.Cell>
         <Table.Cell>{this.props.artist}</Table.Cell>
         <Table.Cell>
