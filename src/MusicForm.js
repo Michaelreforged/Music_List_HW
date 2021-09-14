@@ -27,7 +27,7 @@ class MusicForm extends Component{
   }
 
   handleSubmit = (e) => {
-    this.props.addSong({id: this.props.songs.length + 1, ...this.state});
+    this.props.addSong({id: this.props.songs[this.props.songs.length - 1].id + 1, ...this.state});
     this.setState({
       name:"",
       artist:""
