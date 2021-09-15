@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Icon, Table } from "semantic-ui-react";
 import styled, { keyframes } from "styled-components";
 import  MusicForm from "./MusicForm";
+import {primaryColor, secondaryColor, tertinaryColor} from "./Color"
 
 class Music extends Component {
 
@@ -9,7 +10,7 @@ class Music extends Component {
 
   state = {
     showForm:false,
-    spin: true
+    spin: false
   }
 
   componentDidMount(){
@@ -27,7 +28,6 @@ class Music extends Component {
   }
 
   toggleSpin = () => {
-    console.log(this.state.spin)
     this.setState({
       spin: !this.state.spin
     })
@@ -52,13 +52,23 @@ class Music extends Component {
         <Table.Cell>
           {this.props.name}
           {this.state.spin ? 
-          <StarSpin>
-            <Icon onClick={this.toggleSpin} name="star" />
+            <>
+            <StarSpin>
+              <Icon onClick={this.toggleSpin} name="star" />
             </StarSpin >
-            :
+            <p>
+              Click the star to stop the spinning
+            </p>
+            </>
+            : // ternary operator for stars to spin or not spin
+            <>
             <Star>
               <Icon onClick={this.toggleSpin} name="star"/>
             </Star>
+            <SpinText>
+              Click to the Star to spin the star
+            </SpinText>
+            </>
           }
           </Table.Cell>
         <Table.Cell>{this.props.artist}</Table.Cell>
@@ -73,26 +83,40 @@ class Music extends Component {
 } 
 
 const rotate360 = keyframes`
-from {
-  transform:rotate(0deg);
-  color: red;
-}
-to {
-  transform:rotate(360deg);
-  color: blue;
-}
+  0% {
+    transform:rotate(0deg);
+    color: ${primaryColor};
+  }
+  33% {
+    transform:rotate(120deg);
+    color: ${secondaryColor};
+  }
+  66% {
+    transform:rotate(240deg);
+    color: ${tertinaryColor};
+  }
+  100% {
+    transform:rotate(360deg);
+    color: ${primaryColor};
+  }
 `;
 
 const StarSpin = styled.div`
   fontsize: 30px;
   display: inline-block;
-  color: red;
-  animation: ${rotate360} 2s linear infinite;
+  animation: ${rotate360} 1.5s linear infinite;
 `;
+
+const SpinText = styled.div`
+  fontsize:20px
+`
 
 const Star = styled.div`
   fontsize: 30px;
   display: inline-block;
-  color: red;
+  &:hover{
+    color: ${tertinaryColor};
+  }
 `;
+
 export default Music

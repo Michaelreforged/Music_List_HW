@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Container, Form } from "semantic-ui-react";
+import styled from "styled-components";
 
 class MusicForm extends Component{
 
@@ -43,7 +44,7 @@ class MusicForm extends Component{
 
   render(){
     return(
-      <div>
+      <StyledContainer>
       <h1>Songs Form</h1>
       <Form onSubmit={this.handleSubmit}>
       <h3>{this.props.name ? "Edit Song" : "Add Song"}</h3>
@@ -59,11 +60,15 @@ class MusicForm extends Component{
       label="Artist's Name"/>
       <Button color="green">{this.props.name ? "Edit Song" : "Add Song"}</Button>
       </Form>
-      </div>
+      </StyledContainer>
     )
   }
-
-
 }
+
+const StyledContainer = styled(Container)`
+background-color: orange;
+padding: 10px;
+
+`
 
 export default MusicForm
