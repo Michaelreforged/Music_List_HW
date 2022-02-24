@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Container, Form } from "semantic-ui-react";
 import styled from "styled-components";
+import { ContainerBackground } from "./Color";
 
 class MusicForm extends Component{
 
@@ -66,9 +67,9 @@ class MusicForm extends Component{
 }
 
 const StyledContainer = styled(Container)`
-background-color: orange;
+display:flex;
+background-color: ${ContainerBackground};
 padding: 10px;
-
 `
 
 export default MusicForm

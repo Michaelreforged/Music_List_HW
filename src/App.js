@@ -4,6 +4,7 @@ import { Button, Container } from 'semantic-ui-react';
 import Musics from './Musics';
 import MusicForm from './MusicForm';
 import styled from 'styled-components';
+import { primaryColor, tertinaryColor } from './Color';
 
 class App extends Component{
 
@@ -59,7 +60,7 @@ class App extends Component{
   return(
     <AppContainer>
       <Container>
-      <Button fluid onClick={this.toggleForm}>Add New Song</Button>
+      <StyledButton fluid onClick={this.toggleForm}>Add New Song</StyledButton>
       
       {this.state.showForm && <MusicForm
       songs ={this.state.songs}
@@ -73,6 +74,12 @@ class App extends Component{
   )}
 }
 
+const StyledButton = styled(Button)`
+  background-color : ${tertinaryColor};
+&:active{
+  color : ${primaryColor};
+}
+`
 
 const AppContainer = styled.div`
   min-height: 100vh;

@@ -36,7 +36,7 @@ class Music extends Component {
   render(){
     if (this.state.showForm){
       return(
-        <>
+        <styledCell fluid>
         <MusicForm
         toggleForm={this.toggleForm}
         updateSong={this.props.updateSong}
@@ -44,7 +44,7 @@ class Music extends Component {
         <Button onClick={this.toggleForm} color="green">
           Cancel
         </Button>
-        </>
+        </styledCell>
       )
     }
     return(
@@ -81,6 +81,11 @@ class Music extends Component {
       </Table.Row>
     )}
 } 
+
+const styledCell = styled(Table.Cell)`
+display: flex;
+width: fit-content
+`
 
 const rotate360 = keyframes`
   0% {
